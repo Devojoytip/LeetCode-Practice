@@ -7,39 +7,7 @@ using namespace std;
 class Solution
 {
 public:
-    void bfs(vector<vector<int>> &v, vector<vector<bool>> &vis, vector<vector<int>> &dist, int x, int y)
-    {
-        queue<pair<int, int>> q;
-        q.push({x, y});
-        vis[x][y] = 1;
-        int dx[] = {0, 0, 1, -1};
-        int dy[] = {1, -1, 0, 0};
 
-        while (!q.empty())
-        {
-            int i = q.front().first;
-            int j = q.front().second;
-            q.pop();
-
-            for (int p = 0; p < 4; p++)
-            {
-                for (int r = 0; r < 4; r++)
-                {
-                    int x1 = i + dx[p];
-                    int y1 = j + dy[r];
-                    if (x1 >= 0 and y1 >= 0 and x1 < v.size() and y1 < v[0].size() and !vis[x1][y1] and v[x1][y1] == 0)
-                    {
-                        q.push({x1, y1});
-                        if (v[x1][y1] == 1)
-                            dist[x1][y1] = 0;
-                        else
-                            dist[x1][y1] = dist[i][j] + 1;
-                        vis[x1][y1] = 1;
-                    }
-                }
-            }
-        }
-    }
     vector<vector<int>> nearest(vector<vector<int>> &v)
     {
         int m = v.size(), n = v[0].size();
