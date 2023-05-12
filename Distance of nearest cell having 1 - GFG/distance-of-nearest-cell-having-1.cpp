@@ -41,7 +41,7 @@ public:
 
                 int x1 = i + dx[k];
                 int y1 = j + dy[k];
-                if (x1 >= 0 and y1 >= 0 and x1 < v.size() and y1 < v[0].size() and !vis[x1][y1] and v[x1][y1] == 0)
+                if (x1 >= 0 and y1 >= 0 and x1 < v.size() and y1 < v[0].size() and !vis[x1][y1])
                 {
                     q.push({x1, y1});
                     if (v[x1][y1] == 1)
