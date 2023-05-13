@@ -10,13 +10,17 @@ class Solution {
         // code here
         if(vis[node] and same_path[node]) return 1;
         if(vis[node] and !same_path[node]) return 0;
+        
         vis[node]=1;
         same_path[node]=1;
+        
         for(auto neigh:v[node]) 
         {
             if(dfs(v,vis,same_path,neigh)) return 1;
         }
+        
         same_path[node]=0;
+        
         return 0;
     }
     bool isCyclic(int n, vector<int> v[]) {
