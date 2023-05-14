@@ -7,26 +7,36 @@ class Solution
 {
 	public:
 	//Function to return list containing vertices in Topological order. 
-	void dfs(vector<int> v[],vector<int> &vis,stack<int> &s,int node)
-	{
-	    if(vis[node]) return;
-	    vis[node]=1;
-	    for(auto neigh:v[node]) dfs(v,vis,s,neigh);
-	    s.push(node);
-	}
+	
+	// BFS - Kahn's Algo
+	
 	vector<int> topoSort(int n, vector<int> v[]) 
 	{
 	    // code here
 	    vector<int> res;
-	    vector<int> vis(n,0);
+	    vector<int> in_degree(n,0);
 	    stack<int> s;
 	    
-	    for(int i=0;i<n;i++) dfs(v,vis,s,i);
+	    for(int i=0;i<n;i++)
+	    {
+	        for(auto neigh:v[i]) in_degree[neigh]++;
+	    }
+	    
+	    for(int i=0;i<n;i++)
+	    {
+	        if(in_degree[i]==0) s.push(i);
+	    }
 	    
 	    while(!s.empty())
 	    {
-	        res.push_back(s.top());
+	        int i=s.top();
+	        res.push_back(i);
 	        s.pop();
+	        for(auto neigh:v[i]) 
+	        {
+	            if(in_degree[neigh]!=0) in_degree[neigh]--;
+	            if(in_degree[neigh]==0) s.push(neigh);
+	        }
 	    }
 	    
 	    return res;
