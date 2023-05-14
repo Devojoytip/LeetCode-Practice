@@ -6,34 +6,38 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in a directed graph.
-    bool dfs(vector<int> v[],vector<bool> &vis,vector<bool> &same_path,int node) {
-        // code here
-        if(vis[node] and same_path[node]) return 1;
-        if(vis[node] and !same_path[node]) return 0;
-        
-        vis[node]=1;
-        same_path[node]=1;
-        
-        for(auto neigh:v[node]) 
-        {
-            if(dfs(v,vis,same_path,neigh)) return 1;
-        }
-        
-        same_path[node]=0;
-        
-        return 0;
-    }
+    // BFS- Kahn's Algo - Topological Sort
+    
     bool isCyclic(int n, vector<int> v[]) {
         // code here
-        vector<bool> vis(n,0);
-        vector<bool> same_path(n,0);
+        vector<int> in_degree(n,0);
+        vector<int> topo;
+        stack<int> s;
         
-        for(int i=0;i<n;i++) 
+        for(int i=0;i<n;i++)
         {
-            if(dfs(v,vis,same_path,i)) return 1;
+            for(auto it:v[i]) in_degree[it]++;
         }
         
-        return 0;
+        for(int i=0;i<n;i++)
+        {
+            if(in_degree[i]==0) s.push(i);
+        }
+        
+        while(!s.empty())
+        {
+            int i=s.top();
+            s.pop();
+            topo.push_back(i);
+            
+            for(auto it:v[i])
+            {
+                if(in_degree[it]!=0) in_degree[it]--;
+                if(in_degree[it]==0) s.push(it);
+            }
+        }
+        
+        return topo.size()<n;
         
     }
 };
