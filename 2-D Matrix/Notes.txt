@@ -1,0 +1,4 @@
+In a 2-D Matrix v,
+
+no of rows = v.size()
+no of cols = v[0].size()
