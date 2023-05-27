@@ -1,0 +1,8 @@
+s.size()
+isalpha(char c)
+
+tolower(char c)
+islower(char c)
+toupper(char c)
+isupper(char c)
+isdigit(char c)
