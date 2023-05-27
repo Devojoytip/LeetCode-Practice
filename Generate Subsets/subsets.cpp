@@ -1,25 +1,25 @@
 // https://leetcode.com/problems/subsets/description/
 
+// Take & Not take
 class Solution {
 public:
-    vector<vector<int>> v;
-    void sol(vector<int>& a,vector<int> b,int i,int j,int n)
+    vector<vector<int>> res;
+    void sol(vector<vector<int>> &res,vector<int>& v,vector<int> curr,int idx,int n)
     {
-        if(i==n)
+        if(idx==n)
         {
-            vector<int>c;
-            for(int k=0;k<j;k++) c.push_back(b[k]);
-            v.push_back(c);
+            res.push_back(curr);
             return;
         }
-        b[j]=a[i];
-        sol(a,b,i+1,j+1,n);
-        sol(a,b,i+1,j,n);
+        
+        sol(res,v,curr,idx+1,n);
+        curr.push_back(v[idx]);
+        sol(res,v,curr,idx+1,n);
     }
-    vector<vector<int>> subsets(vector<int>& a) {
-        int n=a.size();
-        vector<int> b(n);
-        sol(a,b,0,0,n);
-        return v;
+    vector<vector<int>> subsets(vector<int>& v) {
+        int n=v.size();
+        vector<int> curr;
+        sol(res,v,curr,0,n);
+        return res;
     }
 };
