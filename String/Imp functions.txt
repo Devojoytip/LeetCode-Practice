@@ -1,8 +1,12 @@
-s.size()
-isalpha(char c)
+int n = s.size()
+bool check = isalpha(char c)
 
-tolower(char c)
-islower(char c)
-toupper(char c)
-isupper(char c)
-isdigit(char c)
+char ch = tolower(char c)
+bool check = islower(char c)
+char ch = toupper(char c)
+bool check = isupper(char c)
+bool check = isdigit(char c)
+
+string temp = s.substr(pos,len)
+s.erase(pos,len)
+
