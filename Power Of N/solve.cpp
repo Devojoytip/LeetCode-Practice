@@ -6,6 +6,7 @@ To check if n is power of k
 
 https://leetcode.com/problems/power-of-four
 https://leetcode.com/problems/power-of-three
+https://leetcode.com/problems/power-of-two
 
 */
 
