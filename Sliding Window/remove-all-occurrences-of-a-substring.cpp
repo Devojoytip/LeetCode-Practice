@@ -1,6 +1,16 @@
-// https://leetcode.com/problems/remove-all-occurrences-of-a-substring
+/*
+https://leetcode.com/problems/remove-all-occurrences-of-a-substring
 
-// Sliding window
+Sliding window
+
+DIFF:
+
+1. k = size of part
+2. j++ till we get string of size k
+3. when match found erase it & intializa i=0,j=0
+4. else i++, j++ to maintain length = k
+
+*/
 
 class Solution {
 public:
