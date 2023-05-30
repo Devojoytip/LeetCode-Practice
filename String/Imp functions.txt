@@ -10,3 +10,10 @@ bool check = isdigit(char c)
 string temp = s.substr(pos,len)
 s.erase(pos,len)
 
+reverse(s.begin(),s.end());
+
+Add char to string
+s+=ch;
+
+Add int to string
+s+=(n+'0');
