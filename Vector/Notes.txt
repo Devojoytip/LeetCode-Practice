@@ -1,0 +1,14 @@
+Declaration
+vector<int> v(size,val);
+vector<int> v(size);
+
+v.push_back(x)
+v.pop_back(x)
+
+v.resize(size,default val)
+
+sort in ascending
+sort(v.begin(),v.end());
+
+sort in descending
+sort(v.begin(),v.end(),greater<int>());
