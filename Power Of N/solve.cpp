@@ -15,6 +15,6 @@ public:
     bool isPowerOfK(int n,int k) {
         if(n<1) return 0;
         if(n==1) return 1;
-        return (n%k==0) and isPowerOfK(n/k);
+        return (n%k==0) and isPowerOfK(n/k,k);
     }
 };
