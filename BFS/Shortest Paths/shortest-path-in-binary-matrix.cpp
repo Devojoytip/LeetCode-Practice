@@ -3,7 +3,7 @@
   https://leetcode.com/problems/shortest-path-in-binary-matrix/
   
   check if start and end points are valid or not ie can be visited or not
-  init start point as 1
+  init cost of start point as 1
   for shortest path we need to update the cost of every node's every valid neighbour we visit by 1 when visited for first time
   return cost of end point
   
