@@ -1,0 +1,7 @@
+pair<datatype1,datatpe2> p;
+
+pair<datatype1,datatpe2> p (x,y);
+
+pair<datatype1,datatpe2> p = {x,y};
+
+pair<datatype1,datatpe2> p=make_pair(x,y);
