@@ -7,9 +7,13 @@ char ch = toupper(char c)
 bool check = isupper(char c)
 bool check = isdigit(char c)
 
+Substing
 string temp = s.substr(pos,len)
+
+Erase
 s.erase(pos,len)
 
+Reverse string
 reverse(s.begin(),s.end());
 
 Add char to string
@@ -17,3 +21,12 @@ s+=ch;
 
 Add int to string
 s+=(n+'0');
+
+Convert single digit to char
+char c = num + '0';
+
+Convert char to digit
+int num = ch - '0';
+
+converts a string to an integer value
+int x = stoi(s);
