@@ -1,5 +1,10 @@
-// https://leetcode.com/problems/find-k-closest-elements
+/*
 
+https://leetcode.com/problems/find-k-closest-elements
+
+we change i,j till we get a k size subarray
+
+*/
 
 class Solution {
 public:
