@@ -1,0 +1,6 @@
+v.size()
+
+int idx = lower_bound(v.begin(), v.end(), num) - v.begin()
+
+sort(v.begin(),v.end())
+
