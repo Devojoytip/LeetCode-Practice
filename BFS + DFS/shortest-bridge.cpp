@@ -2,6 +2,13 @@
 
 https://leetcode.com/problems/shortest-bridge
 
+Next question
+55. Jump Game
+More challenges
+743. Network Delay Time
+1222. Queens That Can Attack the King
+2555. Maximize Win From Two Segments
+
 */
 
 class Solution {
