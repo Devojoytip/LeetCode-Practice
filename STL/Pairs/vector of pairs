@@ -1,1 +1,9 @@
 vector<pair<int,int>> dir = {{0,1}, {0,-1}, {1,0}, {-1,0}, {1,1}, {-1,-1}, {1,-1}, {-1,1}};
+
+sort a vector of pair then it sorts based on 1st ele. if both equal then based on their 2nd
+
+// Custom sort
+bool comparePairs(const pair<int, int>& a, const pair<int, int>& b) {
+    return a.first < b.first;
+}
+sort(v.begin(), v.end(), comparePairs);
