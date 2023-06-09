@@ -16,6 +16,9 @@ s.erase(pos,len)
 Reverse string
 reverse(s.begin(),s.end());
 
+Replace
+s.replace(idx, no of char to be replaced, new string);
+
 Add char to string
 s+=ch;
 
