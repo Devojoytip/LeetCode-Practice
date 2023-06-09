@@ -1,4 +1,14 @@
-// https://leetcode.com/problems/rotate-image/
+/*
+
+https://leetcode.com/problems/rotate-image/
+
+Observation:
+
+after rotation the ith row becomes ith col in reverse order
+thus take transpose of v
+reverse every row
+
+*/
 
 class Solution {
 public:
