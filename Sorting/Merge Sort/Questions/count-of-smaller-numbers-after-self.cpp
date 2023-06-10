@@ -8,7 +8,6 @@ We need to store the indexes of the nos as well as we need to calc individual co
 
 */
 
-#define LL long long
 class Solution {
 public:
     void Merge(vector<int> &res, vector<pair<int, int>>& v,int low,int mid,int high) {
