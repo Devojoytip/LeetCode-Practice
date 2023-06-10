@@ -26,3 +26,25 @@ public:
         return 0;
     }
 };
+
+
+// 2nd app
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& v, int t) {
+
+        int m=v.size(), n=v[0].size();
+        int s=0,e=m*n-1;
+
+        while(s<=e)
+        {
+            int mid=s+(e-s)/2;
+            int ele=v[mid/n][mid%n];
+            if(ele==t) return 1;
+            else if(ele>t) e--;
+            else  s++;
+        }
+
+        return 0;
+    }
+};
