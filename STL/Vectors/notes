@@ -9,3 +9,10 @@ v.resize(n);
 v.clear();
 
 v.erase();
+
+v.rbegin(), v.rend() for reverse iteration
+for (auto it = v.rbegin(); it != v.rend(); it++) {
+    int element = *it; // starting from last ele
+    // Process the element
+    // ...
+}
