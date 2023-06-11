@@ -4,3 +4,8 @@ int idx = lower_bound(v.begin(), v.end(), num) - v.begin()
 
 sort(v.begin(),v.end())
 
+v.resize(n);
+
+v.clear();
+
+v.erase();
