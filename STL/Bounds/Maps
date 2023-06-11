@@ -1,0 +1,9 @@
+auto it = map.upper_bound(key): 
+returns an iterator pointing to 1st element in the map that is strictly greater than the key. 
+If no such element is found, it returns the iterator map.end()
+
+Thus to get the key, it--
+
+auto it = map.lower_bound(key): 
+returns an iterator pointing to the first element in the map that is not less than key. 
+If all elements in the map are less than key, it returns map.end()
