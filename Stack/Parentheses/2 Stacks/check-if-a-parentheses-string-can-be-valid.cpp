@@ -1,5 +1,8 @@
 // https://leetcode.com/problems/check-if-a-parentheses-string-can-be-valid
 
+// stack 1 - only open brackets which can't be changed
+// stack 2 - all brackets which can be changed
+
 class Solution {
 public:
     bool canBeValid(string s, string lock) {
