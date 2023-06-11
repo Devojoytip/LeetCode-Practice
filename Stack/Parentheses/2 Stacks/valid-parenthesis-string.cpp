@@ -1,5 +1,8 @@
 // https://leetcode.com/problems/valid-parenthesis-string
 
+// stack 1 - open brackets 
+// stack 2 - stars
+
 class Solution {
 public:
     bool checkValidString(string s) {
