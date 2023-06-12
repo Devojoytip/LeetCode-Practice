@@ -33,3 +33,6 @@ int num = ch - '0';
 
 converts a string to an integer value
 int x = stoi(s);
+
+integer to string
+string s = to_string(num);
