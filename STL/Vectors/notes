@@ -6,7 +6,14 @@ sort(v.begin(),v.end())
 sort(v.begin(),v.end(),greater<int>()); // descending
 
 // sort using lamba fn - descending
-sort(v.begin(),v.end(),[](const pair<double,double> &a,const pair<double,double> &b){return a.first > b.first;});
+sort(v.begin(),v.end(),[](const pair<int,int> &a,const pair<int,int> &b){return a.first > b.first;});
+
+// Normal fn
+static bool cmp(const pair<int,int> &a,const pair<int,int> &b)
+{
+    return a.first > b.first;
+}
+sort(v.begin(),v.end(),cmp);
 
 v.resize(n); // Space : O(N) 
 
