@@ -5,6 +5,9 @@ int idx = lower_bound(v.begin(), v.end(), num) - v.begin()
 sort(v.begin(),v.end())
 sort(v.begin(),v.end(),greater<int>()); // descending
 
+// sort using lamba fn - descending
+sort(v.begin(),v.end(),[](const pair<double,double> &a,const pair<double,double> &b){return a.first > b.first;});
+
 v.resize(n); // Space : O(N) 
 
 v.clear();
