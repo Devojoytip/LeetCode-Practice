@@ -1,0 +1,3 @@
+l.sort([](const pair<int,int> &a,const pair<int,int> &b) { return a.first>b.first; });
+
+l.sort();
