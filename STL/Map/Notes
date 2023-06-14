@@ -1,0 +1,6 @@
+Declaration:
+
+unordered_map<int,int> mp
+{
+    {1,10},{2,5},{3,10},{4,50}
+};
