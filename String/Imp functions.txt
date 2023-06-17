@@ -19,6 +19,12 @@ reverse(s.begin(),s.end());
 Replace
 s.replace(idx, no of char to be replaced, new string);
 
+Insert char into string
+s.insert(pos, 1, ch);
+
+Insert string into string
+s.insert(pos, stringToInsert);
+
 Add char to string
 s+=ch;
 
