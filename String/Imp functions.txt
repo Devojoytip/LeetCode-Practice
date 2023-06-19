@@ -42,3 +42,6 @@ int x = stoi(s);
 
 integer to string
 string s = to_string(num);
+
+s.pop_back();
+s.push_back(ch);
