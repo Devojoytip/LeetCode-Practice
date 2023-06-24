@@ -1,5 +1,14 @@
 // https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix
 
+/*
+
+Say X is the Kth smallest number in the matrix.
+Then there should be exactly (k-1) elements in matrix <= X.
+Count in each row for such elements.
+Binary Search X. The lowest possible number is the first element of matrix and highest possible number is last element of matrix.
+
+*/
+
 class Solution {
 public:
     int kthSmallest(vector<vector<int>>& v, int k) {
