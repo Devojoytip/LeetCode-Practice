@@ -31,7 +31,7 @@ public:
                     prev="/*";
                     i+=2;
                 }
-                else if(prev=="")
+                else
                 {
                     curr+=s[i];
                     i++;
