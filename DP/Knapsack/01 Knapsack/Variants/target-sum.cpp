@@ -4,8 +4,10 @@ class Solution {
     int solve(vector<int>& arr, int n, int sum,vector<vector<int>> &dp){
         for(int i=0;i<=n;i++) dp[i][0]=1;
         
-        for(int i=1; i<=n; i++){
-            for(int j=0; j<=sum; j++){
+        for(int i=1; i<=n; i++)
+        {
+            for(int j=0; j<=sum; j++) // start from 0 as sum can be 0
+            {
                 if(arr[i-1]<=j) dp[i][j]=dp[i-1][j-arr[i-1]] + dp[i-1][j];
                 else dp[i][j]=dp[i-1][j];
             }
