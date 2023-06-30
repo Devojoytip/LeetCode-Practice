@@ -2,47 +2,36 @@
 
 class Solution {
 public:
-
-    string lcs(int x, int y, string s, string t)
+    int sol(string s, int &l,int &r,int n)
     {
-        vector<vector<int>> dp(x+1, vector<int>(y+1,0));
-        if(x==0 or y==0) return 0;
-        
-        for(int i=1;i<=x;i++)
-        {
-            for(int j=1;j<=y;j++)
-            {
-                if(s[i-1]==t[j-1]) dp[i][j] = 1 + dp[i-1][j-1];
-                else dp[i][j] = 0;
-            }
-        }
-
-        string res="";
-        int i=x,j=y;
-
-        while(i>0 and j>0)
-        {
-            if(s[i-1]==t[j-1])
-            {
-                res.push_back(s[i-1]);
-                i--;
-                j--;
-            }
-            else
-            {
-                if(dp[i-1][j]>dp[i][j-1]) i--;
-                else j--;
-            }
-        }
-        
-        reverse(res.begin(),res.end());
-        return res;
-    }
+        while(l>=0 and r<n and s[l]==s[r]) l--, r++;
+        return r-l-1;
+    } 
 
     string longestPalindrome(string s) {
-        int n=s.size();
-        string t=s;
-        reverse(s.begin(),s.end());
-        return lcs(n,n,s,t);
+        
+        int n=s.size(), maxLen=0;
+        string res="";
+
+        for(int i=0;i<n;i++)
+        {
+            int l=i,r=i+1;
+            int evenPalLen=sol(s,l,r,n);
+            if(evenPalLen>maxLen) 
+            {
+                maxLen=evenPalLen;
+                res=s.substr(l+1,evenPalLen);
+            }
+
+            l=i,r=i;
+            int oddPalLen=sol(s,l,r,n);
+            if(oddPalLen>maxLen) 
+            {
+                maxLen=oddPalLen;
+                res=s.substr(l+1,oddPalLen);
+            }
+        }
+
+        return res;
     }
 };
