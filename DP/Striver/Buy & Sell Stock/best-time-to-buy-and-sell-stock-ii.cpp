@@ -30,26 +30,35 @@ public:
         return profit;
     }
 
-    int memoized(vector<int>&v,int i,int buy,vector<vector<int>>&dp){
-        
-        if(i==v.size()) return 0;
+    //TOP-DOWN
+
+    int sol(vector<int>& v, vector<vector<int>> &dp, int i, int buy) 
+    {
+        if(i==v.size()) // return 0 simply or can check
+        {
+            if(buy) return 0;
+            return -1e8;
+        }
+
         if(dp[i][buy]!=-1) return dp[i][buy];
-        int profit=0,take,not_take;
-        
+
+        int take=0, notTake=0;
+
         if(buy)
         {
-            take=memoized(v,i+1,0,dp)-v[i];
-            not_take=memoized(v,i+1,1,dp);
+            take = sol(v, dp, i+1, 0) - v[i];
+            notTake = sol(v, dp, i+1, 1);
         }
-        
+
         else
         {
-            take=memoized(v,i+1,1,dp)+v[i];
-            not_take=memoized(v,i+1,0,dp);
+            take = sol(v, dp, i+1, 1) + v[i];
+            notTake = sol(v, dp, i+1, 0);
         }
-        
-        return dp[i][buy]=max(take,not_take);
+
+        return dp[i][buy] = max(take, notTake);
     }
+
 
     int bottomUp(vector<int>&v){
         int n=v.size();
