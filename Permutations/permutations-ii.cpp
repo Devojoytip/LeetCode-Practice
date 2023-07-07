@@ -1,10 +1,11 @@
 // https://leetcode.com/problems/permutations-ii/
 
+// Use set
 class Solution {
 public:
-    void recur(set<vector<int>> &s,vector<int>& v,vector<int> curr,vector<bool> vis,int idx,int n)
+    void recur(set<vector<int>> &s,vector<int>& v,vector<int> curr,vector<bool> vis,int cnt,int n)
     {
-        if(idx==n)
+        if(cnt==n)
         {
             s.insert(curr);
             return;
@@ -16,7 +17,7 @@ public:
             if(vis[i]) continue;
             curr.push_back(num);
             vis[i]=1;
-            recur(s,v,curr,vis,idx+1,n);
+            recur(s,v,curr,vis,cnt+1,n);
             curr.pop_back();
             vis[i]=0;
         }
