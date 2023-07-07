@@ -2,32 +2,37 @@
 
 class Solution {
 public:
-    void recur(vector<vector<int>> &res,vector<int>& v,vector<int> curr,vector<bool> vis,int idx,int n)
+    void recur(vector<int> &v, vector<vector<int>> &res, vector<int> curr, vector<int>& vis, int cnt) 
     {
-        if(idx==n)
+        if(cnt==v.size()) 
         {
             res.push_back(curr);
             return;
         }
 
-        for(int i=0;i<n;i++)
+        for(int i=0;i<v.size();i++)
         {
-            int num=v[i];
             if(vis[i]) continue;
-            curr.push_back(num);
+
             vis[i]=1;
-            recur(res,v,curr,vis,idx+1,n);
-            curr.pop_back();
+            curr.push_back(v[i]);
+
+            recur(v,res,curr,vis,cnt+1);
+            
+            // Back-tracking
             vis[i]=0;
+            curr.pop_back();
         }
     }
 
-    vector<vector<int>> permute(vector<int>& v) 
-    {
-        vector<vector<int>>res;
-        vector<int>curr;
-        vector<bool> vis(v.size(),0);
-        recur(res,v,curr,vis,0,v.size());
-        return res;    
+    vector<vector<int>> permute(vector<int>& v) {
+        
+        vector<vector<int>> res;
+        
+        vector<int> vis(v.size(),0);
+
+        recur(v,res,{},vis,0);
+
+        return res;
     }
 };
