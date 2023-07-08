@@ -1,4 +1,4 @@
-// https://leetcode.com/problems/palindrome-partitioning/description/
+// https://leetcode.com/problems/palindrome-partitioning
 
 // Simple Recursion
 
