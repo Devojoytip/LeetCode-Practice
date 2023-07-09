@@ -24,13 +24,20 @@ class Solution{
         {
             char c=it.first;
             pair<int,int> p=it.second;
+            
             int dx=p.first;
             int dy=p.second;
+            
             int X=x+dx, Y=y+dy;
+            
             if(X>=n or Y>=n or X<0 or Y<0 or v[X][Y]==0 or vis[X][Y]==1) continue;
+            
             curr.push_back(c);
             vis[X][Y]=1;
+            
             recur(v,res,curr,X,Y,n,mp,vis);
+            
+            // back-tracking
             if(curr.size()) curr.pop_back();
             vis[X][Y]=0;
         }
@@ -60,7 +67,6 @@ class Solution{
     }
 };
 
-    
 
 
 //{ Driver Code Starts.
