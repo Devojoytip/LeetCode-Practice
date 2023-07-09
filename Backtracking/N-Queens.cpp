@@ -2,61 +2,64 @@
 
 class Solution {
 public:
-    bool check(int n,int x,int y,vector<string> &board) 
+    bool isValid(int n, vector<string> &board, int row, int col) 
     {
-        for(int i=0;i<n;i++) 
+        for(int i=0;i<row;i++)
         {
-            if(board[x][i]=='Q' or board[i][y]=='Q') return 0;
+            if(board[i][col]=='Q') return 0; // check the column
+            // if(board[row][i]=='Q') return 0; // check the row but not needed
+        }  
+
+        int i=row, j=col;
+        while(i!=0 and j!=0) // diagonal
+        {
+            i--; 
+            j--;
+            if(board[i][j]=='Q') return 0;
         }
 
-        int i=x,j=y;
-
-        while(i>=0 and j>=0)
+        i=row, j=col;
+        while(i!=0 and j!=n-1) // anti-diagonal
         {
+            i--; 
+            j++;
             if(board[i][j]=='Q') return 0;
-            i--;j--;
-        }
-
-        i=x,j=y;
-
-        while(i>=0 and j<n)
-        {
-            if(board[i][j]=='Q') return 0;
-            i--;j++;
         }
 
         return 1;
     }
 
-    void dfs(int n,int row,int cnt,vector<vector<string>> &res,vector<string> &board) 
+    void recur(int n, vector<vector<string>> &res, vector<string> &board, int row, int cnt) 
     {
-        if(cnt==n)
+        if(cnt==n)    
         {
             res.push_back(board);
             return;
         }
 
-        if(row>=n) return;
+        if(row==n) return;
 
         for(int i=0;i<n;i++)
         {
-            if(check(n,row,i,board)) 
+            if(isValid(n,board,row,i))
             {
                 board[row][i]='Q';
-                dfs(n,row+1,cnt+1,res,board);
-                board[row][i]='.';
-            }    
-        }      
+                recur(n,res,board,row+1,cnt+1);
+                board[row][i]='.'; // back-tracking
+            }
+        }
     }
 
-    vector<vector<string>> solveNQueens(int n) 
-    {
-        vector<string> board;
+    vector<vector<string>> solveNQueens(int n) {
+        
         vector<vector<string>> res;
-        string s;
+        vector<string> board;
+        string s="";
         for(int i=0;i<n;i++) s+='.';
         for(int i=0;i<n;i++) board.push_back(s);
-        dfs(n,0,0,res,board);
-        return res;       
+        
+        recur(n,res,board,0,0);
+
+        return res;
     }
 };
