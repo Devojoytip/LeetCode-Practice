@@ -44,10 +44,11 @@ class Solution{
         string s="";
         
         map<char, pair<int,int>> mp;
-        mp['R']=make_pair(0,1);
-        mp['L']=make_pair(0,-1);
-        mp['U']=make_pair(-1,0);
-        mp['D']=make_pair(1,0);
+        
+        mp['R']={0,1};
+        mp['L']={0,-1};
+        mp['D']={1,0};
+        mp['U']={-1,0}; 
         
         if(v[0][0]==0) return res;
         
