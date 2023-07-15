@@ -1,5 +1,5 @@
 # LeetCode-Practice
-Collection of LeetCode questions to ace the coding interview! 
+Collection of LeetCode questions to ace the coding interviews and DSA rounds! 
 
 My LeetCode profile - https://leetcode.com/DevojoytiPal/
 
