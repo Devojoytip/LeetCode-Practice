@@ -3,7 +3,9 @@
 class Solution {
 public:
     int largestRectangleArea(vector<int>& v) {
-        int ans(1),n(v.size()),maxi(-1);
+        
+        int n(v.size()),maxi(-1);
+        
         stack<int> ls;
         stack<int> rs;
         vector<int> l(n);
@@ -21,6 +23,7 @@ public:
                 ls.push(i);
             }
         }
+
         for(int i=n-1;i>=0;i--)
         {
             if(rs.empty()) rs.push(i);
