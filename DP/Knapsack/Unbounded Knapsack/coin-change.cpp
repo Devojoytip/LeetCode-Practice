@@ -4,6 +4,33 @@
 
 class Solution {
 public:
+    int f(int i, int n, int w, vector<int>& v, vector<vector<int>> &dp)
+    {
+        // code here
+        if(w==0) return 0;
+
+        if(i==n) return 1e8;
+        
+        if(dp[i][w]!=-1) return dp[i][w];
+        
+        if(w>=v[i]) dp[i][w] = min(1+f(i,n,w-v[i],v,dp), f(i+1,n,w,v,dp));
+        
+        else dp[i][w] = f(i+1,n,w,v,dp);
+        
+        return dp[i][w];
+    }
+    
+    int coinChange(vector<int>& v, int t) {
+        int n=v.size();
+        vector<vector<int>> dp(n+1,vector<int>(t+1,-1));
+
+        return (f(0,n,t,v,dp)>=1e8) ? -1 : f(0,n,t,v,dp);
+    }
+};
+
+
+class Solution {
+public:
     int coinChange(vector<int>& v, int sum) {
 
         int n=v.size();
