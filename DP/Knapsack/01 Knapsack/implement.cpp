@@ -4,6 +4,32 @@ class Solution
 {
     public:
     //Function to return max value that can be put in knapsack of capacity W.
+    int dp[1001][1001];
+    
+    int sol(int w, int wt[], int val[], int n) 
+    { 
+       // Your code here
+       if(!n or !w)return 0;
+       
+       if(dp[n][w]!=-1) return dp[n][w];
+       
+       if(wt[n-1]<=w) return dp[n][w]=max(val[n-1]+sol(w-wt[n-1],wt,val,n-1),sol(w,wt,val,n-1));
+       
+       return dp[n][w]=sol(w,wt,val,n-1);
+    }
+    
+    int knapSack(int w, int wt[], int val[], int n) 
+    { 
+       // Your code here
+       memset(dp,-1,sizeof(dp));
+       return sol(w,wt,val,n);
+    }
+};
+
+class Solution
+{
+    public:
+    //Function to return max value that can be put in knapsack of capacity W.
     int knapSack(int w, int wt[], int val[], int n) 
     { 
        // Your code here
