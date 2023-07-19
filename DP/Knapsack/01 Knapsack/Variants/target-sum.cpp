@@ -5,7 +5,7 @@ class Solution {
 public:
     int recur(vector<int>& v, int i, int n, int t, vector<vector<int>> &dp) {
 
-        if(t==0 and i==n) return 1;
+        if(t==0 and i==n) return 1; // for cases like 1,0 as 1-0=1 and 1+0=1
 
         if(i>=n) return 0;
 
