@@ -15,6 +15,7 @@ class Solution
            for(int j=1;j<=w;j++)
            {
                if(wt[i-1]<=j) dp[i][j]=max(dp[i-1][j],dp[i-1][j-wt[i-1]]+val[i-1]);
+                   
                else dp[i][j]=dp[i-1][j];
            }
        }
