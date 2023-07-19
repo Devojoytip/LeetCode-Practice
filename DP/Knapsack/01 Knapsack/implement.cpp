@@ -1,28 +1,32 @@
 // https://practice.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
 
+
 class Solution
 {
     public:
     //Function to return max value that can be put in knapsack of capacity W.
-    int dp[1001][1001];
     
-    int sol(int w, int wt[], int val[], int n) 
+    int f(int w, int v[], int val[], int i, int n, vector<vector<int>> &dp) 
     { 
        // Your code here
-       if(!n or !w)return 0;
+       if(w==0 or i==n) return 0;
        
-       if(dp[n][w]!=-1) return dp[n][w];
+       if(dp[i][w]!=-1) return dp[i][w];
        
-       if(wt[n-1]<=w) return dp[n][w]=max(val[n-1]+sol(w-wt[n-1],wt,val,n-1),sol(w,wt,val,n-1));
+       if(v[i]<=w) dp[i][w] = max(f(w-v[i],v,val,i+1,n,dp)+val[i], f(w,v,val,i+1,n,dp));
        
-       return dp[n][w]=sol(w,wt,val,n-1);
+       else dp[i][w] = f(w,v,val,i+1,n,dp);
+       
+       return dp[i][w];
+       
     }
     
-    int knapSack(int w, int wt[], int val[], int n) 
+    int knapSack(int w, int v[], int val[], int n) 
     { 
        // Your code here
-       memset(dp,-1,sizeof(dp));
-       return sol(w,wt,val,n);
+       vector<vector<int>> dp(n+1,vector<int>(w+1,-1));
+       
+       return f(w,v,val,0,n,dp);
     }
 };
 
