@@ -9,7 +9,7 @@ class Solution{
 	    
 	    if(i==n and s<=t) return s;
 	    
-	    if(s>t) return -1;
+	    if(s>t or i>=n) return -1;
 	    
 	    if(dp[i][s]!=-1) return dp[i][s];
 	    
