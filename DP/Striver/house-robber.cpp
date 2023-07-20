@@ -1,5 +1,26 @@
 // https://leetcode.com/problems/house-robber
 
+// TOP-DOWN
+class Solution {
+public:
+    int f(vector<int>& v, int i, int n, vector<int> &dp) {
+        
+        if(i>=n) return 0;
+
+        if(dp[i]!=-1) return dp[i];
+
+        return dp[i]=max(v[i]+f(v,i+2,n,dp), f(v,i+1,n,dp));
+    }
+    int rob(vector<int>& v) {
+
+        int n=v.size();
+        vector<int> dp(n+1,-1);
+
+        return f(v,0,n,dp);
+    }
+};
+
+// BOTTOM-UP
 class Solution
 {
     public:
