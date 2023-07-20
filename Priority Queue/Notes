@@ -1,0 +1,15 @@
+Custom priority queue
+
+#define psi pair<int, string>
+
+class myComparatorClass {
+  public:
+    bool operator() (const psi &p1, const psi &p2) {
+      
+      if(p1.first == p2.first) return p1.second < p2.second;
+      
+      return p1.first > p2.first;
+    }
+};
+
+priority_queue<psi, vector<psi>, myComparatorClass> pq;
