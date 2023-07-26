@@ -2,36 +2,30 @@
 
 class Solution {
 public:
-    void recur(vector<int>& v, vector<vector<int>> &res, vector<int> curr, int idx, int sum) {
+    void f(vector<int>& v, vector<int> curr, vector<vector<int>>& res, int i, int t) {
         
-        if(sum==0)
+        if(t==0)
         {
             res.push_back(curr);
             return;
         }
 
-        if(idx>=v.size()) return;
+        if(i==v.size() or t<0) return;
 
-        for(int i=idx;i<v.size();i++)
-        {
-            if(v[i]>sum) break;
-            
-            if(i>idx and v[i]==v[i-1]) continue;
+        curr.push_back(v[i]);
+        f(v,curr,res,i+1,t-v[i]);
+        curr.pop_back();
 
-            curr.push_back(v[i]);
-            recur(v,res,curr,i+1,sum-v[i]);
-            curr.pop_back();
-        }
+        i=upper_bound(v.begin(),v.end(),v[i])-v.begin();
+        f(v,curr,res,i,t);
     }
 
-    vector<vector<int>> combinationSum2(vector<int>& v, int sum) {
-        
-        sort(v.begin(),v.end());
-        
-        vector<vector<int>> res;
-        
-        recur(v,res,{},0,sum);
+    vector<vector<int>> combinationSum2(vector<int>& v, int t) {
 
-        return res;
+        vector<vector<int>> res;
+        sort(v.begin(),v.end());
+        f(v,{},res,0,t);
+
+        return res;    
     }
 };
