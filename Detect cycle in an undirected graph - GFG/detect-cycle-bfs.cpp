@@ -7,19 +7,34 @@ using namespace std;
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
-    void dfs(int n, int curr, int parent, bool &cycle, vector<int> adj[], vector<int> &vis)
+    void bfs(int n, int curr, int parent, bool &cycle, vector<int> adj[], vector<int> &vis)
     {
+        queue<pair<int,int>> q;
+        q.push({curr,-1});
         vis[curr]=1;
         
-        for(auto neigh: adj[curr])
+        while(q.size())
         {
-            if(vis[neigh] and neigh!=parent) 
+            int curr=q.front().first;
+            int par=q.front().second;
+            q.pop();
+            
+            for(auto neigh: adj[curr])
             {
-                cycle=1;
-                return;
+                if(vis[neigh] and neigh!=par)
+                {
+                    cycle=1;
+                    return;
+                }
+                
+                else if(!vis[neigh])
+                {
+                    vis[neigh]=1;
+                    q.push({neigh,curr});
+                }
+                
+                else continue;
             }
-            else if(!vis[neigh]) dfs(n,neigh,curr,cycle,adj,vis);
-            else continue;
         }
     }
     
@@ -30,7 +45,7 @@ class Solution {
         
         for(int i=0;i<n;i++)
         {
-            if(!vis[i]) dfs(n,i,-1,cycle,adj,vis);
+            if(!vis[i]) bfs(n,i,-1,cycle,adj,vis);
             if(cycle) return 1;
         }
         
