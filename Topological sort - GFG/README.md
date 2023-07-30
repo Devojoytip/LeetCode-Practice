@@ -1,9 +1,9 @@
 # Topological sort
 ## Medium
 
-<h3>
+<h4>
   Link : <a href="https://practice.geeksforgeeks.org/problems/topological-sort/1" target="_blank"> Topological sort</a>
-</h3>
+</h4>
 <div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a Directed Acyclic Graph (DAG) with V vertices and E edges, Find any Topological Sorting of that Graph.</span></p>
 <p><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
 <pre><span style="font-size: 18px;"><strong>Input:</strong></span>
