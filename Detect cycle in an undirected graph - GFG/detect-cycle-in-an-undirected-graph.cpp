@@ -3,38 +3,41 @@
 using namespace std;
 
 // } Driver Code Ends
+
 class Solution {
   public:
     // Function to detect cycle in an undirected graph.
-    void dfs(vector<int> adj[],vector<bool>&vis,int curr,int parent,bool &cycle)
+    void dfs(int n, int curr, int parent, bool &cycle, vector<int> adj[], vector<int> &vis)
     {
         vis[curr]=1;
-        queue<pair<int,int>>q;
-        for(auto neigh:adj[curr]) 
+        
+        for(auto neigh: adj[curr])
         {
-            if(vis[neigh] and neigh!=parent)
+            if(vis[neigh] and neigh!=parent) 
             {
                 cycle=1;
-                break;
+                return;
             }
-            else if(!vis[neigh]) dfs(adj,vis,neigh,curr,cycle);
+            else if(!vis[neigh]) dfs(n,neigh,curr,cycle,adj,vis);
+            else continue;
         }
-        
     }
-    bool isCycle(int V, vector<int> adj[]) {
+    
+    bool isCycle(int n, vector<int> adj[]) {
         // Code here
-        vector<bool>vis(V,0);
+        vector<int> vis(n,0);
         bool cycle=0;
         
-        for(int i=0;i<V;i++)
+        for(int i=0;i<n;i++)
         {
-            if(!vis[i]) dfs(adj,vis,i,-1,cycle);
+            if(!vis[i]) dfs(n,i,-1,cycle,adj,vis);
             if(cycle) return 1;
         }
         
         return 0;
     }
 };
+
 
 //{ Driver Code Starts.
 int main() {
