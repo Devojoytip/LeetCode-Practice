@@ -25,25 +25,27 @@ public:
         
         int ans=0;
         
-        vector<vector<int>> dp(n+1, vector<int>(m+1,-1));
+        vector<vector<int>> dp(n+1, vector<int>(m+1,0));
+        
+        for(int i=0;i<n;i++) dp[i][m-1]=v[i][m-1];
         
         for(int col=m-2;col>=0;col--)
         {
             for(int row=0;row<n;row++)
             {
-                int right= v[row][col+1];
+                int right= dp[row][col+1];
                 
-                int up_right= (row==0) ? 0 : v[row-1][col+1];
+                int up_right= (row==0) ? 0 : dp[row-1][col+1];
                 
-                int down_right= (row==n-1) ? 0 : v[row+1][col+1];
+                int down_right= (row==n-1) ? 0 : dp[row+1][col+1];
                 
-                v[row][col]=v[row][col]+max({right, up_right, down_right});
+                dp[row][col]=v[row][col]+max({right, up_right, down_right});
             }
         }
         
         for(int i=0;i<n;i++)
         {
-            ans=max(ans, v[i][0]);
+            ans=max(ans, dp[i][0]);
         }
         
         return ans;
