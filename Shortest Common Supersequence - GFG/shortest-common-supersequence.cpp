@@ -8,7 +8,6 @@ using namespace std;
 // } Driver Code Ends
 //User function template for C++
 
-
 class Solution
 {
     public:
@@ -31,11 +30,12 @@ class Solution
         return dp[n][m];
     }
     
-    int shortestCommonSupersequence(string a, string b, int m, int n)
+    int shortestCommonSupersequence(string a, string b, int n, int m)
     {
         return n + m - LCS(a,b);
     }
 };
+
 
 //{ Driver Code Starts.
 
