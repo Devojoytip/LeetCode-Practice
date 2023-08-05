@@ -9,26 +9,33 @@ using namespace std;
 
 class Solution{
 public:
-    int dp[505][505];
-    int sol(int i,int j,int arr[])
+    int dp[101][101];
+    
+    int f(int a[], int n, int i, int j)
     {
-        if(i>=j)return 0;
+        // code here
+        if(i==j) return 0;
+        
         if(dp[i][j]!=-1) return dp[i][j];
-        int mini=INT_MAX;
+        
+        int ans=1e9;
+        
         for(int k=i;k<j;k++)
         {
-            int ans=sol(i,k,arr)+sol(k+1,j,arr)+arr[i-1]*arr[j]*arr[k];
-            mini=min(mini,ans);
+            ans=min(ans, f(a,n,i,k)+f(a,n,k+1,j)+a[i-1]*a[k]*a[j]);
         }
-        return dp[i][j]=mini;
+        
+        return dp[i][j]=ans;
     }
-    int matrixMultiplication(int N, int arr[])
+    
+    int matrixMultiplication(int N, int a[])
     {
         // code here
         memset(dp,-1,sizeof dp);
-        return sol(1,N-1,arr);
+        return f(a,N,1,N-1);
     }
 };
+
 
 //{ Driver Code Starts.
 
