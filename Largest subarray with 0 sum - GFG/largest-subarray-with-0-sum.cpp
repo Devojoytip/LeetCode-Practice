@@ -18,8 +18,6 @@ class Solution{
         
         unordered_map<int, int> mp;
         
-        // for(int i=0;i<v.size();i++) mp[v[i]]=i;
-        
         for(int i=0;i<v.size();i++)
         {
             sum+=v[i];
