@@ -1,5 +1,10 @@
 // https://practice.geeksforgeeks.org/problems/find-nth-root-of-m5843/1?utm_source=gfg&utm_medium=article&utm_campaign=bottom_sticky_on_article
-
+ /*
+s=1, e=m;
+check for each mid ie pow(mid, n) == m , return mid
+                                  <m - s=mid+1 
+                                  >m - e=mid-1
+*/
 class Solution{
 	public:
 	
