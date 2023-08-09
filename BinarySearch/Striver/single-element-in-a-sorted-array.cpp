@@ -2,33 +2,27 @@
 
 class Solution {
 public:
-    int sol(vector<int>& v) {
+    int singleNonDuplicate(vector<int>& v) {
         
-        int n=v.size();
-        
-        if(n==1) return v[0];
-        
-        if(v[0]!=v[1]) return v[0];
-        
+        int n=v.size(), s=0, e=n-1;
+
+        if(n==1) return v[s];
+        if(v[s+1]!=v[s]) return v[s];
         if(v[n-1]!=v[n-2]) return v[n-1];
 
-        int s=1,e=n-2;
+        s=1, e=n-2;
 
         while(s<=e)
         {
-            int m=(s+e)/2;
+            int mid=(s+e)/2;
 
-            if(v[m]!=v[m-1] and v[m]!=v[m+1]) return v[m];
+            if(v[mid]!=v[mid-1] and v[mid]!=v[mid+1]) return v[mid];
 
-            if((m%2==0 and v[m+1]==v[m]) or (m%2==1 and v[m-1]==v[m])) s=m+1;
+            else if((mid%2==0 and v[mid+1]==v[mid]) or (mid%2==1 and v[mid-1]==v[mid])) s=mid+1;
 
-            else e=m-1;
+            else e=mid-1;
         }
 
         return -1;
-    }
-
-    int singleNonDuplicate(vector<int>& v) {
-        return sol(v);    
     }
 };
