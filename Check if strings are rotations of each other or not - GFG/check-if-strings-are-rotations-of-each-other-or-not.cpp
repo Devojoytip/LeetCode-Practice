@@ -10,41 +10,6 @@ class Solution
     public:
     //Function to check if two strings are rotations of each other or not.
     
-    unordered_map<string, int> mp;
-    
-    // bool f(string a,string b)
-    // {
-    //     // Your code here
-    //     if(a==b) return 1;
-        
-    //     if(a=="" and b=="") return 1;
-        
-    //     if(a.size()!=b.size()) return 0;
-        
-    //     string key=a+"."+b;
-        
-    //     if(mp.find(key)!=mp.end()) return mp[key];
-        
-    //     bool ans=0;
-        
-    //     for(int k=0;k<a.size()-1;k++)
-    //     {
-    //         if(f(a.substr(0,k+1), b.substr(0,k+1)) and f(a.substr(k+1), b.substr(k+1))) 
-    //         {
-    //             ans=1;
-    //             break;
-    //         }
-            
-    //         if(f(a.substr(0,k+1), b.substr(a.size()-k-1,a.substr(0,k+1).size())) and f(a.substr(k+1), b.substr(0, a.substr(k+1).size()))) 
-    //         {
-    //             ans=1;
-    //             break;
-    //         }
-    //     }
-        
-    //     return mp[key]=ans;
-    // }
-    
     bool f(string a,string b)
     {
         if(a==b) return 1;
@@ -65,8 +30,6 @@ class Solution
     bool areRotations(string a,string b)
     {
         // Your code here
-        mp[a]=1;
-        mp[b]=1;
         return f(a,b);
     }
 };
