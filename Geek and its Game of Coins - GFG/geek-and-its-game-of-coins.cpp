@@ -43,8 +43,8 @@ class Solution{
         for(int i=2;i<=n;i++)
         {
             if(i-1>=0 and !dp[i-1]) dp[i]=1; 
-            else if(i-x>=0 and !dp[i-x]) dp[i]=1; 
-            else if(i-y>=0 and !dp[i-y]) dp[i]=1; 
+            if(i-x>=0 and !dp[i-x]) dp[i]=1; 
+            if(i-y>=0 and !dp[i-y]) dp[i]=1; 
         }
         
         return dp[n];
