@@ -52,41 +52,11 @@ class Solution
     struct node *reverse (struct node *h, int k)
     { 
         // Complete this method
-        // if(!h or !h->next) return h;
-        
-        // int n=0;
-        // struct node *t=h;
-        
-        // while(t)
-        // {
-        //     n++;
-        //     t=t->next;
-        // }
-        
-        // if(k>n) return h;
-        
-        // struct node *prev=NULL;
-        // struct node *curr=h;
-        // struct node *nxt=h;
-        // int c=k;
-        
-        // while(c>0)
-        // {
-        //     nxt=nxt->next;
-        //     curr->next=prev;
-        //     prev=curr;
-        //     curr=nxt;
-        //     c--;
-        // }
-        
-        // if(n-k>0) h->next=reverse(nxt,k);
-        
-        // return prev;
-        
         if(!h or !h->next) return h;
-
+        
         int n=0;
-        struct node* t=h;
+        struct node *t=h;
+        
         while(t)
         {
             n++;
@@ -97,10 +67,10 @@ class Solution
         
         if(k>n) cnt=n;
         else cnt=k;
-
-        struct node* curr=h;
-        struct node* nxt=h;
-        struct node* prev=NULL;
+        
+        struct node *prev=NULL;
+        struct node *curr=h;
+        struct node *nxt=h;
         
         while(cnt>0)
         {
@@ -110,10 +80,9 @@ class Solution
             curr=nxt;
             cnt--;
         }
-
-        n-=k;
-        if(n>0) h->next=reverse(nxt,k);
-
+        
+        if(n-k>0) h->next=reverse(nxt,k);
+        
         return prev;
     }
 };
