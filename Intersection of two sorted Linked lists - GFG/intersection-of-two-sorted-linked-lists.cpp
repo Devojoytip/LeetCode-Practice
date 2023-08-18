@@ -85,11 +85,7 @@ struct Node
 Node* findIntersection(Node* h1, Node* h2)
 {
     // Your Code Here
-    if(!h1 and !h2) return NULL;
-    
-    if(h1 and !h2) return h1;
-    
-    if(!h1 and h2) return h2;
+    if(!h1 or !h2) return NULL;
     
     Node* h=new Node(-1);
     Node*t=h;
