@@ -86,8 +86,8 @@ class Solution{
     
     Node* mergeSort(Node* head) {
         // your code here
-        Node* h=mergeSortFn(head);
-        return h;
+        Node* res=mergeSortFn(head);
+        return res;
     }
 };
 
