@@ -10,16 +10,16 @@ using namespace std;
 class Solution {
 public:
 
-    int f(int n, int k, int mid, vector<int> &v) 
+    bool f(vector<int> &v, int mid, int k)
     {
-        int cows=1,last=v[0];
+        int last=v[0], cows=1;
         
-        for(int i=1;i<n;i++)
+        for(int i=1;i<v.size();i++)
         {
-            if(v[i]-last>=mid) 
+            if(v[i]-last>=mid)
             {
-                cows++;
                 last=v[i];
+                cows++;
             }
             
             if(cows==k) return 1;
@@ -27,27 +27,28 @@ public:
         
         return 0;
     }
-    
+
     int solve(int n, int k, vector<int> &v) {
     
         // Write your code here
         sort(v.begin(),v.end());
-        int s=1,e=v[n-1]-v[0];
+        
+        int s=1, e=v.back()-v.front(); 
         
         while(s<=e)
         {
             int mid=(s+e)/2;
             
-            int canPlace=f(n,k,mid,v);
+            bool canPlace=f(v,mid,k);
             
             if(canPlace) s=mid+1;
-            
             else e=mid-1;
         }
         
         return e;
     }
 };
+
 
 //{ Driver Code Starts.
 
