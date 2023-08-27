@@ -86,7 +86,6 @@ Node* buildTree(string str) {
 
 
 // } Driver Code Ends
-
 /*Complete the function below
 
 struct Node
@@ -106,21 +105,17 @@ class Solution{
     public:
     //Function to check whether all nodes of a tree have the value 
     //equal to the sum of their child nodes.
-    
     int isSumProperty(Node *r)
     {
-    // Write your code here.
-    
-        if(!r or (!r->left and !r->right)) return true;
-    
-        int ldata=(r->left) ? r->left->data : 0;
+     // Add your code here
+        if(!r or (!r->left and !r->right)) return 1;
         
-        int rdata=(r->right) ? r->right->data : 0;
-    
-        return r->data==ldata+rdata and isSumProperty(r->left) and isSumProperty(r->right);
+        int leftSum= (r->left) ? r->left->data : 0;
+        int rightSum= (r->right) ? r->right->data : 0;
+        
+        return r->data==leftSum+rightSum and isSumProperty(r->left) and isSumProperty(r->right);
     }
 };
-
 
 //{ Driver Code Starts.
 
