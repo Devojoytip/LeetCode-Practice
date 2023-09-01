@@ -34,14 +34,14 @@ class Solution
        
        for(int i=0;i<n;i++)
        {
-           int idx=i;
+           int minIdx=i;
            
            for(int j=i+1;j<n;j++)
            {
-               if(a[idx]>a[j]) idx=j;
+               if(a[minIdx]>a[j]) minIdx=j;
            }
            
-           swap(a[idx], a[i]);
+           swap(a[minIdx], a[i]);
        }
     }
 };
