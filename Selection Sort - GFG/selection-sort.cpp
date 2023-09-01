@@ -32,7 +32,7 @@ class Solution
     {
        //code here
        
-       for(int i=0;i<n-1;i++)
+       for(int i=0;i<n;i++)
        {
            int idx=i;
            
@@ -41,7 +41,7 @@ class Solution
                if(a[idx]>a[j]) idx=j;
            }
            
-           swap(a[i],a[idx]);
+           swap(a[idx], a[i]);
        }
     }
 };
