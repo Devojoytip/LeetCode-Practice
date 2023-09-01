@@ -7,26 +7,26 @@ using namespace std;
 class Solution
 {
 public:
-    void f(vector<int> v, int n, int sum, int i, vector<int> &res)
+    void f(vector<int> v, vector<int> &res, int n, int i, int sum)
     {
         // Write Your Code here
-        if(i==n) 
+        if(i==v.size())
         {
             res.push_back(sum);
             return;
         }
         
-        f(v,n,sum,i+1,res);
+        f(v,res,n,i+1,sum);
         
-        f(v,n,sum+v[i],i+1,res);
+        sum+=v[i];
+        f(v,res,n,i+1,sum);
     }
     
     vector<int> subsetSums(vector<int> v, int n)
     {
         // Write Your Code here
         vector<int> res;
-        f(v,n,0,0,res);
-        
+        f(v,res,n,0,0);
         return res;
     }
 };
