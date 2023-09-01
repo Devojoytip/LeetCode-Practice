@@ -19,50 +19,49 @@ void printArray(int arr[], int size)
 class Solution
 {
     public:
-    void merge(int a[], int l, int mid, int r)
+    void merge(int a[], int l, int m, int r)
     {
          // Your code here
-        int i=l, j=mid+1;
-        vector<int> v; 
+        int i=l, j=m+1, k=0;
+        vector<int> t(r-l+1, 0);
         
-        while(i<=mid and j<=r)
+        while(i<=m and j<=r)
         {
-            if(a[i]>a[j]) 
+            if(a[i]<a[j])
             {
-                v.push_back(a[j]);
-                j++;
+                t[k]=a[i];
+                k++;
+                i++;
             }
             else
             {
-                v.push_back(a[i]);
-                i++;
+                t[k]=a[j];
+                k++;
+                j++;
             }
         }
         
-        while(i<=mid)
+        while(i<=m)
         {
-            v.push_back(a[i]);
+            t[k]=a[i];
+            k++;
             i++;
         }
         
         while(j<=r)
         {
-            v.push_back(a[j]);
+            t[k]=a[j];
+            k++;
             j++;
         }
         
-        for(int k=l;k<=r;k++)
-        {
-            a[k]=v[k-l];
-        }
+        for(k=l;k<=r;k++) a[k]=t[k-l];
     }
     
     void mergeSort(int a[], int l, int r)
     {
         //code here
-        
         if(l>=r) return;
-        
         int mid=(l+r)/2;
         mergeSort(a,l,mid);
         mergeSort(a,mid+1,r);
