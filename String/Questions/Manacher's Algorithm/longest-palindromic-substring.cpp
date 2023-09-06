@@ -16,6 +16,7 @@ public:
         for(int i=0;i<n;i++)
         {
             int l=i,r=i+1;
+            
             int evenPalLen=sol(s,l,r,n);
             if(evenPalLen>maxLen) 
             {
@@ -24,6 +25,7 @@ public:
             }
 
             l=i,r=i;
+           
             int oddPalLen=sol(s,l,r,n);
             if(oddPalLen>maxLen) 
             {
