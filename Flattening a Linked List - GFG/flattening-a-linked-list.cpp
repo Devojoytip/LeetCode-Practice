@@ -117,9 +117,9 @@ Node *merge(Node *r, Node *t)
     Node *h=new Node(-1);
     Node *curr=h;
     
-    while(t and r)
+    while(r and t)
     {
-        if(t->data>r->data)
+        if(r->data<t->data)
         {
             curr->bottom=new Node(r->data);
             curr=curr->bottom;
@@ -134,9 +134,8 @@ Node *merge(Node *r, Node *t)
         }
     }
     
+    if(r) curr->bottom=r;
     if(t) curr->bottom=t;
-    else if(r) curr->bottom=r;
-    else curr->bottom=NULL;
     
     return h->bottom;
 }
@@ -144,9 +143,12 @@ Node *merge(Node *r, Node *t)
 Node *flatten(Node *r)
 {
    // Your code here
-   if(!r or !r->next) return r;
+   
+   if(!r) return r;
+   
    Node *t=flatten(r->next);
    
    return merge(r, t);
 }
+
 
