@@ -2,7 +2,7 @@
 
 class Solution {
 public:
-    void recur(vector<vector<int>> &res,vector<int> curr,int n,int idx,int k)
+    void recur(vector<vector<int>> &res, vector<int> curr, int n, int idx, int k)
     {
         if(curr.size()==k)
         {
