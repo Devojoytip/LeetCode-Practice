@@ -105,10 +105,6 @@ struct Node
 
 class Solution {
 public:
-    // vector <int> boundary(Node *root)
-    // {
-    //     //Your code here
-    // }
     
     bool isLeaf(Node *r)
     {
