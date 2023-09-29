@@ -3,46 +3,38 @@
 using namespace std;
 
 // } Driver Code Ends
-
 class Solution
 {
     public:
     //Function to find minimum number of attempts needed in 
     //order to find the critical floor.
-    int fn(int e, int f, int dp[][201]) 
+    
+    int sol(int n, int f, vector<vector<int>> &dp) 
     {
-        // your code here
-        if(f==1 or f==0) return f;
+        if(f==0 or f==1) return f;
         
-        if(e==1) return f;
+        if(n==1) return f;
         
-        if(dp[e][f]!=-1) return dp[e][f];
+        if(dp[n][f]!=-1) return dp[n][f];
         
-        int ans=INT_MAX;
-        
+        int ans=1e9;
         for(int k=1;k<=f;k++)
         {
-            int breaks=fn(e-1,k-1,dp);
-            
-            int NotBreaks=fn(e,f-k,dp);
-            
-            int maxi=1+max(breaks, NotBreaks);
-            
-            ans=min(ans,maxi);
+            dp[n][f]=1+max(sol(n-1,k-1,dp), sol(n,f-k,dp));
+            ans=min(ans, dp[n][f]);
         }
         
-        return dp[e][f]=ans;
+        return dp[n][f]=ans;
     }
     
-    int eggDrop(int e, int f) 
+    int eggDrop(int n, int f) 
     {
         // your code here
-        int dp[201][201];
-        memset(dp,-1,sizeof dp);
-        return fn(e,f,dp);
+        vector<vector<int>> dp(n+1,vector<int>(f+1, -1));
+        
+        return sol(n,f,dp);
     }
 };
-
 
 //{ Driver Code Starts.
 int main()
