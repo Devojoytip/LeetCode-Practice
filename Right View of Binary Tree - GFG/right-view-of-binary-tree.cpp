@@ -37,37 +37,42 @@ struct Node
 }; */
 
 // Should return  right view of tree
-
 class Solution
 {
     public:
+    //Function to return list containing elements of right view of binary tree.
     
     vector<int> rightView(Node *r)
     {
-       // Your Code here
+       // Your code here
        if(!r) return {};
-        
-        queue<pair<Node*, int>> q;
-        map<int, int> mp;
-        vector<int> res;
-        
-        q.push({r, 0});
-        
-        while(q.size())
-        {
-            Node* curr=q.front().first;
-            int lev=q.front().second;
-            q.pop();
-            
-            mp[lev]=curr->data;
-            
-            if(curr->left) q.push({curr->left, lev+1});
-            if(curr->right) q.push({curr->right, lev+1});
-        }
-        
-        for(auto it: mp) res.push_back(it.second);
-        
-        return res;
+       
+       queue<Node *> q;
+       map<int, Node *> mp;
+       vector<int> res;
+       int lev=0;
+       q.push(r);
+       
+       while(q.size())
+       {
+           int n=q.size();
+           
+           while(n--)
+           {
+               Node *curr=q.front();
+               q.pop();
+               
+               mp[lev]=curr;
+               
+               if(curr->left) q.push(curr->left);
+               if(curr->right) q.push(curr->right);
+           }
+           
+           lev++;
+       }
+       
+       for(auto it: mp) res.push_back(it.second->data);
+       return res;
     }
 };
 
