@@ -3,34 +3,29 @@
 using namespace std; 
 
 // } Driver Code Ends
-
 class Solution
 {
 public:
-    void f(vector<int> v, vector<int> &res, int n, int i, int sum)
+    vector<int> subsetSums(vector<int> v, int n)
     {
         // Write Your Code here
-        if(i==v.size())
+        vector<int> res;
+        f(v,res,0,0,n);
+        return res;
+    }
+    
+    void f(vector<int> v, vector<int> &res, int sum, int i, int n)
+    {
+        if(i==n)
         {
             res.push_back(sum);
             return;
         }
         
-        f(v,res,n,i+1,sum);
-        
-        sum+=v[i];
-        f(v,res,n,i+1,sum);
-    }
-    
-    vector<int> subsetSums(vector<int> v, int n)
-    {
-        // Write Your Code here
-        vector<int> res;
-        f(v,res,n,0,0);
-        return res;
+        f(v,res,sum,i+1,n);
+        f(v,res,sum+v[i],i+1,n);
     }
 };
-
 
 //{ Driver Code Starts.
 int main()
