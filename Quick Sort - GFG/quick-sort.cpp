@@ -17,41 +17,33 @@ class Solution
 {
     public:
     //Function to sort an array using quick sort algorithm.
-    void quickSort(int arr[], int low, int high)
+    void quickSort(int a[], int s, int e)
     {
         // code here
-        qs(arr, low, high);
+        if(s>=e) return;
+        
+        int idx=partition(a,s,e);
+        
+        quickSort(a,s,idx-1);
+        quickSort(a,idx+1,e);
     }
     
     public:
-    
-    void qs(int arr[], int low, int high) {
-        
-        if (low>=high) return;
-        
-        int partitionIdx = partition(arr, low, high);
-        
-        qs(arr, low, partitionIdx - 1);
-        
-        qs(arr, partitionIdx + 1, high);
-    }
-
-    int partition (int a[], int low, int high)
+    int partition (int a[], int s, int e)
     {
        // Your code here
-       int i=low, j=high, pivot=a[low];
+       int i=s,j=e,pvt=a[s];
        
        while(i<j)
        {
-           while(i<high and a[i]<=pivot) i++;
+           while(i<e and a[i]<=pvt) i++;
            
-           while(j>low and a[j]>pivot) j--;
+           while(j>s and a[j]>pvt) j--;
            
-           if(i<j) swap(a[i], a[j]);
+           if(i<j) swap(a[i],a[j]);
        }
        
-       swap(a[low], a[j]);
-       
+       swap(a[s],a[j]);
        return j;
     }
 };
