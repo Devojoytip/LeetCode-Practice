@@ -21,9 +21,7 @@ class Solution
     {
         // code here
         if(s>=e) return;
-        
         int idx=partition(a,s,e);
-        
         quickSort(a,s,idx-1);
         quickSort(a,idx+1,e);
     }
@@ -44,6 +42,7 @@ class Solution
        }
        
        swap(a[s],a[j]);
+       
        return j;
     }
 };
