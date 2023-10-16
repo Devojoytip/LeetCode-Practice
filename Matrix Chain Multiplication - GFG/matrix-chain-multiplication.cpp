@@ -9,11 +9,17 @@ using namespace std;
 
 class Solution{
 public:
-    int dp[101][101];
     
-    int f(int a[], int n, int i, int j)
+    int matrixMultiplication(int n, int a[])
     {
-        // code here
+        // code 
+        vector<vector<int>> dp(n+1, vector<int>(n+1, -1));
+        
+        return f(n, a, 1, n-1, dp);
+    }
+    
+    int f(int n, int a[], int i, int j, vector<vector<int>> &dp)
+    {
         if(i==j) return 0;
         
         if(dp[i][j]!=-1) return dp[i][j];
@@ -22,20 +28,12 @@ public:
         
         for(int k=i;k<j;k++)
         {
-            ans=min(ans, f(a,n,i,k)+f(a,n,k+1,j)+a[i-1]*a[k]*a[j]);
+            ans=min(ans, f(n,a,i,k,dp)+f(n,a,k+1,j,dp)+a[i-1]*a[k]*a[j]);
         }
         
         return dp[i][j]=ans;
     }
-    
-    int matrixMultiplication(int N, int a[])
-    {
-        // code here
-        memset(dp,-1,sizeof dp);
-        return f(a,N,1,N-1);
-    }
 };
-
 
 //{ Driver Code Starts.
 
