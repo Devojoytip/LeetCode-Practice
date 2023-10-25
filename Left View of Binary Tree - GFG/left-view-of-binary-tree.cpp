@@ -134,31 +134,23 @@ vector<int> leftView(Node *r)
    if(!r) return {};
    
    queue<Node *> q;
-   unordered_map<int, Node *> mp;
    vector<int> res;
-   int lev=0;
    q.push(r);
    
    while(q.size())
    {
        int n=q.size();
        
-       while(n--)
+       for(int i=0;i<n;i++)
        {
            Node *curr=q.front();
            q.pop();
            
-           if(!mp[lev]) 
-           {
-               mp[lev]=curr;
-               res.push_back(curr->data);
-           }
+           if(i==0) res.push_back(curr->data);  
            
            if(curr->left) q.push(curr->left);
            if(curr->right) q.push(curr->right);
        }
-       
-       lev++;
    }
    
    return res;
