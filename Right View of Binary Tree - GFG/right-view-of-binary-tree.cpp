@@ -46,32 +46,27 @@ class Solution
     {
        // Your code here
        if(!r) return {};
-       
+   
        queue<Node *> q;
-       map<int, Node *> mp;
        vector<int> res;
-       int lev=0;
        q.push(r);
        
        while(q.size())
        {
            int n=q.size();
            
-           while(n--)
+           for(int i=0;i<n;i++)
            {
                Node *curr=q.front();
                q.pop();
                
-               mp[lev]=curr;
+               if(i==n-1) res.push_back(curr->data);  
                
                if(curr->left) q.push(curr->left);
                if(curr->right) q.push(curr->right);
            }
-           
-           lev++;
        }
        
-       for(auto it: mp) res.push_back(it.second->data);
        return res;
     }
 };
