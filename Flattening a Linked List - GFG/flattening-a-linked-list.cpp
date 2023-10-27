@@ -92,50 +92,33 @@ int main(void) {
 
 // } Driver Code Ends
 
-
-/* Node structure  used in the program
-
-struct Node{
-	int data;
-	struct Node * next;
-	struct Node * bottom;
-	
-	Node(int x){
-	    data = x;
-	    next = NULL;
-	    bottom = NULL;
-	}
-	
-};
-*/
-
-/*  Function which returns the  root of 
-    the flattened linked list. */
-    
 Node *merge(Node *r, Node *t)
 {
+    if(!r) return t;
+    if(!t) return r;
+    
     Node *h=new Node(-1);
-    Node *curr=h;
+    Node *tem=h;
     
     while(r and t)
     {
         if(r->data<t->data)
         {
-            curr->bottom=new Node(r->data);
-            curr=curr->bottom;
+            tem->bottom=new Node(r->data);
             r=r->bottom;
         }
         
         else
         {
-            curr->bottom=new Node(t->data);
-            curr=curr->bottom;
+            tem->bottom=new Node(t->data);
             t=t->bottom;
         }
+        
+        tem=tem->bottom;
     }
     
-    if(r) curr->bottom=r;
-    if(t) curr->bottom=t;
+    if(r) tem->bottom=r;
+    if(t) tem->bottom=t;
     
     return h->bottom;
 }
@@ -143,12 +126,10 @@ Node *merge(Node *r, Node *t)
 Node *flatten(Node *r)
 {
    // Your code here
-   
    if(!r) return r;
    
-   Node *t=flatten(r->next);
+   r->next=flatten(r->next);
    
-   return merge(r, t);
+   return merge(r,r->next);
 }
-
 
