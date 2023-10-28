@@ -112,29 +112,45 @@ int main() {
 // } Driver Code Ends
 
 
-void f(struct Node* r, int level, int *max_level, vector<int> &res)
+/* A binary tree node
+
+struct Node
 {
-    // Base Case
-    if (!r) return;
- 
-    // If this is the last Node of its level
-    if (*max_level < level) 
-    {
-        res.push_back(r->data);
-        *max_level = level;
+    int data;
+    struct Node* left;
+    struct Node* right;
+    
+    Node(int x){
+        data = x;
+        left = right = NULL;
     }
- 
-    // Recur for right subtree first,
-    // then left subtree
-    f(r->left, level + 1, max_level,res);
-    f(r->right, level + 1, max_level,res);
-}
- 
-// A wrapper over rightViewUtil()
-vector<int> leftView(struct Node* r)
+};
+ */
+
+//Function to return a list containing elements of left view of the binary tree.
+
+void f(Node *r, vector<int> &res, int *max_lev, int lev)
 {
-    vector<int> res;
-    int max_level = 0;
-    f(r,1,&max_level,res);
-    return res;
+   // Your code here
+   if(!r) return;
+   
+   if(*max_lev < lev)
+   {
+       *max_lev=lev;
+       res.push_back(r->data);
+   }
+   
+   f(r->left,res,max_lev,lev+1);
+   f(r->right,res,max_lev,lev+1);
 }
+
+vector<int> leftView(Node *r)
+{
+   // Your code here
+   vector<int> res;
+   int max_lev=0;
+   f(r,res,&max_lev,1);
+   
+   return res;
+}
+
