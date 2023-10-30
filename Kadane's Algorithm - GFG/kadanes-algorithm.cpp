@@ -12,7 +12,7 @@ class Solution{
     long long maxSubarraySum(int a[], int n){
         
         // Your code here
-        long long sum =0, ans=a[0];
+        long sum=0, ans=a[0];
         
         for(int i=0;i<n;i++)
         {
