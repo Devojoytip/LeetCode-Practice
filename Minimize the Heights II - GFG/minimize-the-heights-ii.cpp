@@ -5,34 +5,30 @@
 using namespace std;
 
 // } Driver Code Ends
+// User function template for C++
 
 class Solution {
   public:
     int getMinDiff(int a[], int n, int k) {
         // code here
-        
         if(n==1) return 0;
-        
         sort(a,a+n);
-        
-        int maxi=a[n-1]-k, mini=a[0]+k;
-        int diff=a[n-1]-a[0];
+        int minH=a[0]+k, maxH=a[n-1]-k;
+        int mini=minH, maxi=maxH, ans=a[n-1]-a[0];
         
         for(int i=1;i<n;i++)
         {
             if(a[i]-k<0) continue;
             
-            maxi=max(a[i-1]+k,a[n-1]-k);
+            mini=min(minH, a[i]-k);
+            maxi=max(maxH, a[i-1]+k);
             
-            mini=min(a[i]-k,a[0]+k);
-            
-            diff=min(diff, maxi-mini);
+            ans=min(ans,maxi-mini);
         }
         
-        return diff;
+        return ans;
     }
 };
-
 
 //{ Driver Code Starts.
 int main() {
