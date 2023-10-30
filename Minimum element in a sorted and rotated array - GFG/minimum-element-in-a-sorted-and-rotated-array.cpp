@@ -10,7 +10,7 @@ public:
         
         int s=0, e=n-1;
         
-        if(a[s]<=a[e]) return a[s];
+        if(a[s]<=a[e]) return a[s]; // sorted & not rotated array
         
         while(s<=e)
         {
