@@ -18,12 +18,9 @@ public:
         
         for(int i=0;i<n;i++)
         {
-            if(v[i]>v[buy])
-            {
-                res.push_back({buy,i});
-                buy=i;
-            }
-            else buy=i;
+            if(v[i]>v[buy]) res.push_back({buy,i});
+            
+            buy=i;
         }
         
         return res;
