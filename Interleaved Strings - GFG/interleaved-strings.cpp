@@ -10,31 +10,28 @@ using namespace std;
 class Solution{
   public:
     /*You are required to complete this method */
-    
-    bool f(string a, string b, string c, int n, int m, int p, vector<vector<int>> &dp)
-    {
-        if(p==0) return 1;
-        
-        if(dp[n][m]!=-1) return dp[n][m];
-
-        bool b1=0, b2=0;
-
-        if(n-1>=0 and a[n-1]==c[p-1]) b1=f(a,b,c,n-1,m,p-1,dp);
-        
-        if(m-1>=0 and b[m-1]==c[p-1]) b2=f(a,b,c,n,m-1,p-1,dp);
-        
-        return dp[n][m]=b1 or b2;
-    }
-    
     bool isInterleave(string a, string b, string c) 
     {
         //Your code here
-        int n=a.size(), m=b.size(), p=c.size();
-        if(n+m!=p) return 0;
+        int n=a.size(),m=b.size(),len=c.size();
+        if(n+m!=len) return 0;
         vector<vector<int>> dp(n+1, vector<int>(m+1, -1));
-        return f(a,b,c,n,m,p,dp);
+        return f(a,n,b,m,c,len,dp);
     }
-
+    
+    bool f(string a, int n, string b, int m, string c, int len, vector<vector<int>> &dp) 
+    {
+        if(len==0) return 1;
+        
+        if(dp[n][m]!=-1) return dp[n][m];
+        
+        int amatch=0, bmatch=0;
+        
+        if(n-1>=0 and a[n-1]==c[len-1]) amatch=f(a,n-1,b,m,c,len-1,dp);
+        if(m-1>=0 and b[m-1]==c[len-1]) bmatch=f(a,n,b,m-1,c,len-1,dp);
+        
+        return dp[n][m]=amatch or bmatch;
+    }
 };
 
 //{ Driver Code Starts.
