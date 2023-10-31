@@ -13,20 +13,18 @@ class Solution{
     int maxLen(vector<int>&v, int n)
     {   
         // Your code here
+        unordered_map<int, int>mp;
+        int i=0,sum=0,ans=0;
         
-        int sum=0, ans=0;
-        
-        unordered_map<int, int> mp;
-        
-        for(int i=0;i<v.size();i++)
+        for (int i = 0; i < n; i++) 
         {
             sum+=v[i];
             
             if(sum==0) ans=max(ans, i+1);
             
-            int rem=sum;
+            int rem=sum-0;
             
-            if(mp.find(sum)!=mp.end()) ans=max(ans, i-mp[sum]);
+            if(mp.find(sum)!=mp.end()) ans=max(ans, i-(mp[sum]+1)+1);
             
             if(mp.find(sum)==mp.end()) mp[sum]=i;
         }
