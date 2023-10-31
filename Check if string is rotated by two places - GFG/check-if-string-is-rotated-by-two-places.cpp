@@ -32,7 +32,7 @@ class Solution
             }
         }
  
-    return clockwise or anticlockwise; // if any of both is true, return true
+        return clockwise or anticlockwise; // if any of both is true, return true
     }
 
 };
