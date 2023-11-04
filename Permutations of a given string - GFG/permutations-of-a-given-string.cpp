@@ -34,7 +34,7 @@ class Solution
 		{
 		    // Code here there
 		    vector<string> res;
-		    vector<int> vis(26,0);
+		    vector<int> vis(s.size(),0);
 		    f(s,"",res,0,vis);
 		    
 		    sort(res.begin(),res.end(),[](const string &a, const string &b)
