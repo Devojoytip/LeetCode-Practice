@@ -92,44 +92,40 @@ int main(void) {
 
 // } Driver Code Ends
 
-Node *merge(Node *r, Node *t)
+Node *merge(Node *a, Node *b)
 {
-    if(!r) return t;
-    if(!t) return r;
     
     Node *h=new Node(-1);
-    Node *tem=h;
+    Node *t=h;
     
-    while(r and t)
+    while(a and b)
     {
-        if(r->data<t->data)
+        if(a->data<b->data)
         {
-            tem->bottom=new Node(r->data);
-            r=r->bottom;
+            t->bottom=new Node(a->data);
+            t=t->bottom;
+            a=a->bottom;
         }
         
         else
         {
-            tem->bottom=new Node(t->data);
+            t->bottom=new Node(b->data);
             t=t->bottom;
+            b=b->bottom;
         }
-        
-        tem=tem->bottom;
     }
     
-    if(r) tem->bottom=r;
-    if(t) tem->bottom=t;
+    if(a) t->bottom=a;
+    if(b) t->bottom=b;
     
     return h->bottom;
 }
 
 Node *flatten(Node *r)
 {
-   // Your code here
-   if(!r) return r;
-   
-   r->next=flatten(r->next);
-   
-   return merge(r,r->next);
+    if(!r or !r->next) return r;
+    r->next=flatten(r->next);
+    
+    return merge(r, r->next);
 }
 
