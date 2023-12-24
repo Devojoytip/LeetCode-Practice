@@ -12,10 +12,10 @@ class Solution{
 	    // Your code goes here
 	    int dp[n+1]={0}, ans=0;
 	    
-	    for(int i=0;i<n;i++) dp[i]=a[i];
-	    
 	    for(int curr=0;curr<n;curr++)
 	    {
+	        dp[curr]=a[curr];
+	        
 	        for(int prev=0;prev<curr;prev++)
 	        {
 	            if(a[curr]>a[prev]) dp[curr]=max(dp[curr], a[curr]+dp[prev]);
