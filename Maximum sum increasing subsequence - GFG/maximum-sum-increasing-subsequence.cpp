@@ -3,29 +3,26 @@
 using namespace std;
 
 // } Driver Code Ends
-
 class Solution{
 		
+
 	public:
-	
 	int maxSumIS(int a[], int n)  
 	{  
 	    // Your code goes here
-	    int ans=INT_MIN;
-	    
-	    vector<int> dp(n+1);
+	    int dp[n+1]={0}, ans=0;
 	    
 	    for(int i=0;i<n;i++) dp[i]=a[i];
 	    
-	    for(int i=0;i<n;i++)
+	    for(int curr=0;curr<n;curr++)
 	    {
-	        for(int prev=0;prev<i;prev++)
+	        for(int prev=0;prev<curr;prev++)
 	        {
-	            if(a[prev]<a[i]) dp[i]=max(dp[i], dp[prev]+a[i]);
+	            if(a[curr]>a[prev]) dp[curr]=max(dp[curr], a[curr]+dp[prev]);
 	        }
+	        
+	        ans=max(ans, dp[curr]);
 	    }
-	    
-	    for(int i=0;i<n;i++) ans=max(ans, dp[i]);
 	    
 	    return ans;
 	}  
