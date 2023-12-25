@@ -10,39 +10,62 @@ using namespace std;
 class Solution {
 public:
     int dp[505][505];
-    int palin[505][505];
-    bool isPalindrome(string s,int i,int j)
+    int pal[505][505];
+    
+    bool isPal(string s,int i,int j)
     {
-        if(palin[i][j]!=-1) return palin[i][j];
-        s=s.substr(i,j-i+1);
-        string a=s;
-        reverse(s.begin(),s.end());
-        return palin[i][j]=(a==s);
+        if(pal[i][j]!=-1) return pal[i][j];
+        
+        if(i==j) return pal[i][j]=1;
+        int x=i, y=j;
+        
+        while(i<j)
+        {
+            if(s[i]==s[j]) i++, j--;
+            else return pal[x][y]=0;
+        }
+        
+        return pal[x][y]=1;
     }
+    
     int sol(string s,int i,int j)
     {
-        if(i>=j)return 0;
+        if(i>j)return dp[i][j]=1e8;
+        
+        if(i==j)return dp[i][j]=0;
+        
+        if(pal[i][j]==1 or isPal(s,i,j)) return 0;
+        
         if(dp[i][j]!=-1) return dp[i][j];
-        if(isPalindrome(s,i,j)) return 0;
-        int mini=INT_MAX;
+        
+        int ans=INT_MAX;
+        
         for(int k=i;k<j;k++)
         {
             int left,right;
+            
             if(dp[i][k]!=-1) left=dp[i][k];
+            //else if(pal[i][k]==1 or isPal(s,i,k)) left=0;
             else left=sol(s,i,k);
+            
             if(dp[k+1][j]!=-1) right=dp[k+1][j];
+            //else if(pal[k+1][j]==1 or isPal(s,k+1,j)) right=0;
             else right=sol(s,k+1,j);
-            int ans=left+right+1;
-            mini=min(mini,ans);
+            
+            ans=min(ans,left+right+1);
         }
-        return dp[i][j]=mini;
+        
+        return dp[i][j]=ans;
     }
+    
     int palindromicPartition(string s) {
         memset(dp,-1,sizeof dp);
-        memset(palin,-1,sizeof dp);
+        memset(pal,-1,sizeof dp);
         return sol(s,0,s.length()-1);
     }
 };
+
+
 
 //{ Driver Code Starts.
 
