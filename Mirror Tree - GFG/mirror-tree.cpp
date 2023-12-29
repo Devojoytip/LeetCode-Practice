@@ -113,10 +113,9 @@ class Solution {
     void mirror(Node* r) {
         // code here
         if(!r) return;
-        Node* l = r->left;
-        r->left=r->right;
-        r->right=l;
-        
+        Node* temp=r->right;
+        r->right=r->left;
+        r->left=temp;
         mirror(r->left);
         mirror(r->right);
     }
