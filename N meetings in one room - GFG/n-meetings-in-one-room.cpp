@@ -12,22 +12,18 @@ class Solution
     {
         // Your code here
         vector<pair<int,int>> v;
-        
-        for(int i=0;i<n;i++) v.push_back({e[i], s[i]});
-        
-        sort(v.begin(), v.end());
-        
-        int end=0, ans=0;
-        
-        for(int i=0;i<n;i++)
+        for(int i=0;i<n;i++) v.push_back({e[i],s[i]});
+        sort(v.begin(),v.end());
+        int ans=0, last=0;
+        for(auto it:v)
         {
-            if(end<v[i].second)
+            int start=it.second, end=it.first;
+            if(last<start)
             {
-                end=v[i].first;
+                last=end;
                 ans++;
             }
         }
-        
         return ans;
     }
 };
