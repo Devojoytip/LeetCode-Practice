@@ -37,8 +37,8 @@ class Solution
            if(i<j) swap(a[i], a[j]);
        }
        
-       swap(a[low], a[j]);
+       swap(a[low], a[j]); // j now has index of smallest no
        
-       return j;
+       return j; // return index of smallest no
     }
 };
